@@ -258,12 +258,6 @@ ActiveRecord::Base.transaction do
           register_entry.model.order('id').each do |instance|
             file.write generate_model_creation_string(instance, register_entry)
           end
-
-          if !SeedMigration.ignore_ids
-            file.write <<-eos
-  ActiveRecord::Base.connection.reset_pk_sequence!('#{register_entry.model.table_name}')
-            eos
-          end
         end
         file.write <<-eos
 end
