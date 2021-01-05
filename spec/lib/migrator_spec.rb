@@ -272,9 +272,6 @@ describe SeedMigration::Migrator do
           contents.should match(/(?=.*User\.create)(?!.*"id"=>)(?=.*"username"=>).*/)
         end
 
-        it "doesn't reset the pk sequence" do
-          contents.should_not include('ActiveRecord::Base.connection.reset_pk_sequence')
-        end
       end
     end
 
